@@ -5,48 +5,24 @@ import Calendar from "@/components/Calendar";
 
 export default function Home() {
   return (
-    <main className="bg-gray-50 min-h-screen">
-
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <div className="px-25 py-10 space-y-8">
-
-        <div>
-          <h1 className="text-3xl font-bold text-teal-900">
+      <div className="flex flex-col gap-6 px-12 py-10">
+        
+        <div className="flex flex-col gap-1">
+          <h1 className="text-3xl font-semibold text-teal-900">
             HI, NAVYA
           </h1>
 
-          <p className="text-gray-500">
-            You've completed 12 tasks this week. Steady Progress
+          <p className="text-m text-gray-500 mb-2">
+            You have completed 12 tasks this week. Steady Progress
           </p>
         </div>
 
-        <div className="flex gap-6">
-
-          {/* LEFT SIDE - TASKS */}
-          <div className="flex flex-col gap-6 w-[70%]">
-            <TaskCard />
-            <TaskCard />
-          </div>
-
-          {/* RIGHT SIDE - STATS */}
-          <div className="grid grid-cols-2 gap-6 w-[30%]">
-
-            <StatCard title="Total Tasks" value={34} color="text-teal-700" />
-
-            <StatCard title="Pending At-Risk" value="03" color="text-red-400" />
-
-            <StatCard title="Lorem Ipsum" value={12} color="text-teal-700" />
-
-            <StatCard title="Ipsum Dorem" value="05" color="text-teal-700" />
-
-          </div>
-
-        </div>
-
-        <Calendar/>
+        <Calendar />
 
       </div>
-    </main>
+    </div>
   );
 }
