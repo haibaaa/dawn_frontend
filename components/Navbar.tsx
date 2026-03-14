@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Navbar: React.FC = () => {
@@ -21,10 +22,10 @@ const Navbar: React.FC = () => {
         </div>*/}
 
       <div className="flex items-center gap-7 text-gray-600">
-        <a className="font-semibold">Dashboard</a>
-        <a className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Calendar</a>
-        <a className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Performance</a>
-        <a className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Exam Prep</a>
+        <Link href="/" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Dashboard</Link>
+        <Link href="/calendar" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Calendar</Link>
+        <Link href="/grades" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Performance</Link>
+        <Link href="/exam-prep" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Exam Prep</Link>
 
         <div className="flex items-center gap-2 bg-gray-100 px-2 py-2 rounded-full">
           <div className="w-6 h-6 bg-teal-400 rounded-full"></div>

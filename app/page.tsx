@@ -1,6 +1,4 @@
 import Navbar from "@/components/Navbar";
-import StatCard from "@/components/StatCard";
-import TaskCard from "@/components/TaskCard";
 import Calendar from "@/components/Calendar";
 
 export default function Home() {

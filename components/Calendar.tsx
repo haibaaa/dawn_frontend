@@ -55,7 +55,7 @@ export default function CalendarSection() {
               )}
 
               {d === 15 && (
-                <div className="bg-yellow-200 text-black px-3 py-1 rounded-lg text-xs mt-2 w-fit">
+                <div className="bg-lime-200 text-black px-3 py-1 rounded-lg text-xs mt-2 w-fit">
                   CSD317 Quiz
                 </div>
               )}
