@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { apiUrl } from "@/lib/api";
 
 // 1. Define Types
 interface Flashcard {
@@ -40,7 +41,7 @@ export default function StudyLab() {
       const formData = new FormData();
       formData.append('file', file);
 
-      const res = await fetch(`http://localhost:8000/${mode}/generate`, {
+      const res = await fetch(apiUrl(`/${mode}/generate`), {
         method: 'POST',
         body: formData,
       });
