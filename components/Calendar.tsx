@@ -36,28 +36,27 @@ export default function CalendarSection() {
               key={d}
               className={`
                 rounded-xl h-24 p-2 text-sm text-gray-600
-                ${d === 15 ? "bg-teal-100 border-2 border-teal-600" : "bg-gray-100"}
+                ${d === 15 ? "bg-lime-100 border-2 border-lime-400" : "bg-gray-100"}
               `}
             >
               <p>{d}</p>
 
               {/* EVENT */}
-              {d === 1 && (
-                <div className="bg-pink-200 text-pink-700 px-3 py-1 rounded-full text-xs mt-2 w-fit">
+              {d === 2 && (
+                <div className="bg-pink-200 text-black px-3 py-1 rounded-lg text-xs mt-2 w-fit">
                   CSD102 Quiz
                 </div>
               )}
 
-              {d === 6 && (
-                <div className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs mt-2 w-fit">
-                  CSD222 Tut
+              {d === 27 && (
+                <div className="bg-blue-200 text-black px-3 py-1 rounded-lg text-xs mt-2 w-fit">
+                  CSD222 Tutorial
                 </div>
               )}
 
-              {/*HIGHLIGHTING TODAY */}
-              {d === 16 && (
-                <div className="bg-blue-200 text-blue-700 px-3 py-1 rounded-full text-xs mt-2 w-fit">
-                  Assignment
+              {d === 15 && (
+                <div className="bg-yellow-200 text-black px-3 py-1 rounded-lg text-xs mt-2 w-fit">
+                  CSD317 Quiz
                 </div>
               )}
               
@@ -72,26 +71,44 @@ export default function CalendarSection() {
       {/* TASK LIST (SIDE PANEL) */}
       <div className="bg-white p-6 rounded-xl">
 
-        <h3 className="font-semibold mb-4">Upcoming Tasks</h3>
+        <h3 className="font-semibold text-lg mb-7 text-gray-600">Upcoming Tasks</h3>
 
         <div className="space-y-4">
 
-          <div className="border-l-4 border-pink-400 pl-3">
-            <p className="font-medium">CSD102 Quiz</p>
-            <p className="text-sm text-gray-500">Oct 1</p>
+          <div className="border-l-4 border-pink-400 rounded-md pl-3 bg-gray-100 p-2">
+            <p className="font-semibold text-pink-400">CSD102 Quiz</p>
+            <p className="text-sm text-gray-500">Due Date: 2 March</p>
           </div>
 
-          <div className="border-l-4 border-green-400 pl-3">
-            <p className="font-medium">CSD222 Tutorial</p>
-            <p className="text-sm text-gray-500">Oct 6</p>
+          <div className="border-l-4 border-yellow-400 rounded-md pl-3 bg-gray-100 p-2">
+            <p className="font-semibold text-yellow-400">CSD317 Quiz</p>
+            <p className="text-sm text-gray-500">Due Date: 15 March</p>
           </div>
 
-          <div className="border-l-4 border-blue-400 pl-3">
-            <p className="font-medium">CSD102 Quiz</p>
-            <p className="text-sm text-gray-500">Oct 16</p>
+          <div className="border-l-4 border-blue-400 rounded-md pl-3 bg-gray-100 p-2">
+            <p className="font-semibold text-blue-400">CSD222 Tutorial</p>
+            <p className="text-sm text-gray-500">Due Date: 27 March</p>
           </div>
 
         </div>
+
+        {/*TASKS COMPLETED*/}
+        <h3 className="font-semibold text-lg mt-7 mb-7 text-gray-600">Completed Tasks</h3>
+
+        <div className="space-y-4">
+
+          <div className="border-l-4 border-emerald-400 rounded-md pl-3 bg-emerald-100 p-2">
+            <p className="font-semibold text-emerald-400">CSD217: Lab Quiz</p>
+            <p className="text-sm text-gray-500">Due Date: 19 February</p>
+          </div>
+
+          <div className="border-l-4 border-emerald-400 rounded-md pl-3 bg-emerald-100 p-2">
+            <p className="font-semibold text-emerald-400">MAT161: Assignment 1</p>
+            <p className="text-sm text-gray-500">Due Date: 20 February</p>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
