@@ -1,62 +1,141 @@
-import React from "react";
+"use client";
 
-const TaskCard: React.FC = () => {
+import { useState } from "react";
+
+export default function CreateTaskModal({ onClose, refreshTasks }: any) {
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const [hours, setHours] = useState(1);
+  const [gradeImpact, setGradeImpact] = useState(1);
+  const [priority, setPriority] = useState(1);
+
+  const handleCreate = async () => {
+
+    if (!title || !deadline) {
+      alert("Please fill required fields");
+      return;
+    }
+
+    const taskData = {
+      title,
+      description,
+      deadline,
+      estimated_hours: Number(hours),
+      grade_impact: Number(gradeImpact),
+      status: "pending",
+      priority: Number(priority),
+      course_id: null,
+      assessment_id: null
+    };
+
+    try {
+
+      const res = await fetch("http://localhost:8000/tasks/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(taskData),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        console.error(err);
+        alert("Task creation failed");
+        return;
+      }
+
+      const data = await res.json();
+      console.log("Created:", data);
+
+      refreshTasks();
+      onClose();
+
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  };
+
   return (
-    <div className="bg-gray-100 rounded-xl p-6 flex justify-between items-center border-l-4 border-orange-500 ">
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
 
-      <div className="space-y-3">
+      <div className="bg-white p-6 rounded-xl w-[420px] space-y-4">
 
-        <div className="flex gap-3 items-center">
-            <p className="text-sm text-gray-500">
-            CSD102 - Data Structures
-            </p>
-            <div className="bg-gray-200 rounded-xl p-1 flex items-center text-xs text-gray-400"> 
-                <p>Due in 2 days</p>
-            </div>
-        </div>
-
-        <h2 className="text-xl font-semibold text-black">
-          LAB ASSIGNMENT PROJECT
+        <h2 className="text-lg font-semibold text-black">
+          Create Task
         </h2>
 
-        <div className="flex gap-8 text-sm">
+        <input
+          placeholder="Task title"
+          className="w-full border p-2 rounded text-gray-400"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-          <div>
-            <p className="text-gray-500 py-1">Grade Impact 40%</p>
-            <div className="w-40 h-2 bg-gray-300 rounded">
-              <div className="bg-orange-500 h-2 w-[40%] rounded"></div>
-            </div>
-          </div>
+        <textarea
+          placeholder="Description"
+          className="w-full border p-2 rounded text-gray-400"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
 
-          <div>
-            <p className="text-gray-500 py-1">Urgency 90%</p>
-            <div className="w-40 h-2 bg-gray-300 rounded">
-              <div className="bg-blue-500 h-2 w-[90%] rounded"></div>
-            </div>
-          </div>
+        <input
+          type="date"
+          className="w-full border p-2 rounded text-gray-400"
+          value={deadline}
+          onChange={(e) => setDeadline(e.target.value)}
+        />
 
-          {/*<div>
-            <p className="text-gray-500 py-1">Grade Impact 15%</p>
-            <div className="w-40 h-2 bg-gray-300 rounded">
-              <div className="bg-black h-2 w-[15%] rounded"></div>
-            </div>
-          </div>*/}
+        <div className="grid grid-cols-3 gap-3">
+
+          <input
+            type="number"
+            placeholder="Hours"
+            className="border p-2 rounded text-gray-400"
+            value={hours}
+            onChange={(e) => setHours(Number(e.target.value))}
+          />
+
+          <input
+            type="number"
+            placeholder="Grade Impact"
+            className="border p-2 rounded text-gray-400"
+            value={gradeImpact}
+            onChange={(e) => setGradeImpact(Number(e.target.value))}
+          />
+
+          <input
+            type="number"
+            placeholder="Priority"
+            className="border p-2 rounded text-gray-400"
+            value={priority}
+            onChange={(e) => setPriority(Number(e.target.value))}
+          />
 
         </div>
-      </div>
 
-      <div className="text-right">
-        <h1 className="text-4xl text-orange-500 font-bold">
-          94
-        </h1>
+        <div className="flex justify-end gap-3">
 
-        <p className="text-sm text-gray-500">
-          Priority Score
-        </p>
+          <button
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-200 rounded text-gray-500"
+          >
+            Cancel
+          </button>
+
+          <button
+            onClick={handleCreate}
+            className="px-4 py-2 bg-teal-600 text-white rounded"
+          >
+            Create
+          </button>
+
+        </div>
+
       </div>
 
     </div>
   );
-};
-
-export default TaskCard;
+}
