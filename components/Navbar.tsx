@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
 
       <div className="flex items-center gap-7 text-gray-600">
         <Link href="/" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Dashboard</Link>
-        <Link href="/calendar" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Resources</Link>
+        <Link href="/resources" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Resources</Link>
         <Link href="/grades" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Performance</Link>
         <Link href="/examprep" className="font-medium text-gray-600 hover:text-teal-700 transition-colors duration-300">Exam Prep</Link>
 

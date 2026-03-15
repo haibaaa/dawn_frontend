@@ -114,11 +114,11 @@ export default function Calendar({ tasks, refreshTasks }: Props) {
           {tasks.map((task) => (
             <div
               key={task.id}
-              className="border-l-4 border-yellow-400 rounded-md pl-3 bg-gray-100 p-2 flex justify-between items-center"
+              className="border-l-4 border-teal-700 rounded-md pl-3 bg-gray-100 p-2 flex justify-between items-center"
             >
 
               <div>
-                <p className="font-semibold text-yellow-500">
+                <p className="font-semibold text-teal-700">
                   {task.title}
                 </p>
 

@@ -4,10 +4,17 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Calendar from "@/components/Calendar";
 import CreateTaskModal from "@/components/TaskCard";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
   const [tasks, setTasks] = useState<any[]>([]);
   const [openModal, setOpenModal] = useState(false);
+  const { user, logout } = useAuth();
+  const displayName = (
+  user?.username ??
+  user?.email?.split("@")[0] ??
+  "User"
+).toUpperCase();
 
   const getTasks = async () => {
     const res = await fetch("http://localhost:8000/tasks/");
@@ -29,7 +36,7 @@ export default function Home() {
 
           <div>
             <h1 className="text-3xl font-semibold text-teal-900">
-              HI, NAVYA
+              HI, {displayName}
             </h1>
 
             <p className="text-gray-500">
